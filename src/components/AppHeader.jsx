@@ -17,8 +17,8 @@ const AppHeader = () =>{
         <header>
             <div className="header">
                 <div className="logo">GeMovies</div>
-                <ul>{headerLinks.map((curLink) => (
-                <li><NavLink to={curLink.url}>{curLink.title}</NavLink></li>
+                <ul>{headerLinks.map((curLink, index) => (
+                <li key={index}><NavLink to={curLink.url}>{curLink.title}</NavLink></li>
             ))}</ul></div>
         </header>
     )

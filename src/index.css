@@ -4,6 +4,8 @@
   box-sizing: border-box;
 }
 
+/* Header */
+
 .header{
   display: flex;
   justify-content: space-between;
@@ -24,6 +26,10 @@ a{
   gap: 30px;
   padding: 0px 20px ;
 }
+.header ul li .active {
+  border-bottom: 1px solid white;
+}
+
 
 .logo{
   color: white;
@@ -31,6 +37,25 @@ a{
   border: 1px solid red;
   padding: 10px;
   border-radius: 20px;
+}
+
+/* HOME */
+/* Main */
+.container {
+  max-width: 1000px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.titolo{
+  text-align: center;
+  margin: 20px 0;
+}
+.descrizione{
+  margin: 20px 0;
+}
+.banner img{
+  width: 100%;
 }
 
 /* Footer */
@@ -42,4 +67,20 @@ a{
   background-color: black;
   color: white;
   padding: 30px 0;
+}
+
+
+/* Movies */
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card{
+  width: calc((100% - (20px * 2)) / 3);
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 20px;
 }
