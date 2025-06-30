@@ -1,11 +1,13 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom";
 
-const Movies = () =>{
+const Movies = () => {
     const [movies, setMovies] = useState([])
 
     useEffect(() => {
         axios.get("http://localhost:3000/movies/").then((resp) => {
+            console.log(resp.data.data)
             setMovies(resp.data.data)
         });
     }, []);
@@ -19,26 +21,23 @@ const Movies = () =>{
                 <h2>Qui puoi vedere tutti i film a nostra disposizione</h2>
             </div>
             <div className="row">
-               {movies.map((curMovie, id) => (
+                {movies.map((curMovie, id) => (
                     <div key={id} className="card">
-                    <p>Titolo: {curMovie.title}</p>
-                    <p>Descrizione: {curMovie.abstract}</p>
-                    <p>Regista: {curMovie.director}</p>
-                    <p>Genere: {curMovie.genre}</p>
-                    <p>Anno di rilascio: {curMovie.release_year}</p>
-                </div>
-               ))}
+                        <div className="card-image"><img src={curMovie.image} alt={curMovie.title} /></div>
+                        <div className="card-text"><h3>Titolo: {curMovie.title}</h3>
+                            <p class="text-overview"><b>Descrizione:</b> {curMovie.abstract}</p>
+                            <p><b>Regista:</b> {curMovie.director}</p>
+                            <p><b>Genere:</b> {curMovie.genre}</p>
+                            <p><b>Anno di rilascio:</b> {curMovie.release_year}</p>
+                            <p><Link to={`/movies/${id}`} className="btn">
+                                Vedi dettagli
+                            </Link></p>
+                        </div>
+                    </div>
+                ))}
             </div>
         </main>
     )
 }
 
 export default Movies
-
-{/* <div className="card">
-                    <p>Titolo: Titolo del film</p>
-                    <p>Descrizione: Descrizione</p>
-                    <p>Regista: nome del regista</p>
-                    <p>Genere: genere</p>
-                    <p>Anno di rilascio: anno di rilascio</p>
-                </div> */}
